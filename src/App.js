@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { useCallback, useState } from "react";
+import Child from "./components/Child";
+import Child1 from "./components/Child1";
 
 function App() {
+  const [count, setCount] = useState(0);
+  const [flag, setFlag] = useState(true);
+  //usecallback function return memerized callback function
+  //once create increment function wont create it again
+  const increment = useCallback(() => {
+    setCount((count) => count + 1);
+  }, []); //if any neccessary to again want to create increment function,we can pass value in []
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      usecallback
+      <Child count={count} increment={increment} />
+      <br></br>
+      <Child1 count={count} increment={increment} />
+      <button onClick={() => setFlag((flag) => !flag)}>
+        recreate increment function
+      </button>
     </div>
   );
 }

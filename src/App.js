@@ -3,6 +3,7 @@ import "./App.css";
 import { useCallback, useState } from "react";
 import Child from "./components/Child";
 import Child1 from "./components/Child1";
+import UsememoHook from "./components/UsememoHook";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -15,13 +16,14 @@ function App() {
 
   return (
     <div className="App">
-      usecallback
+      {/* usecallback
       <Child count={count} increment={increment} />
       <br></br>
       <Child1 count={count} increment={increment} />
       <button onClick={() => setFlag((flag) => !flag)}>
         recreate increment function
-      </button>
+      </button> */}
+      <UsememoHook />
     </div>
   );
 }
